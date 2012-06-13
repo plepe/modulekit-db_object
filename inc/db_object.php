@@ -30,13 +30,16 @@ class db_object {
     return array("data"=>serialize(array()));
   }
 
-  function data() {
+  function data($k) {
     $ret=$this->data;
 
-    foreach($this->fields() as $k) {
-      $ret[$k]=$this->$k;
+    foreach($this->fields() as $_k) {
+      $ret[$_k]=$this->$_k;
     }
     $ret['id']=$this->id;
+
+    if($k)
+      return $ret[$k];
 
     return $ret;
   }
