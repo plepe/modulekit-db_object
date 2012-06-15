@@ -10,4 +10,5 @@ $depend=array();
 // these files will be included in this order:
 $include_php=array(
   "inc/db_object.php",
+  "inc/db_logfile.php",
 );
