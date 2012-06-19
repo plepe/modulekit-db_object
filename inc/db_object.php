@@ -51,8 +51,11 @@ class db_object {
     foreach($data as $k=>$v) {
       if(in_array($k, $fields)) {
 	$this->$k=$v;
-	$set[]=mysql_real_escape_string($k).
-	  "='".mysql_real_escape_string($this->$k)."'";
+	if($v===null)
+	  $set[]=mysql_real_escape_string($k)."=null";
+        else
+	  $set[]=mysql_real_escape_string($k).
+	    "='".mysql_real_escape_string($this->$k)."'";
       }
       else {
 	$this->data[$k]=$v;
